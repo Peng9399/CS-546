@@ -18,8 +18,8 @@ const questionThree = function questionThree(text) {
     const vowels = ['a', 'e', 'i', 'o', 'u'];
     for (let i = 0; i<=text.length; i++){
         vowels.forEach(element => {
-            if(text.charAt(i).includes(elements)){
-                console.log('This works');
+            if(text.charAt(i).includes(element)){
+                sum = sum + 1;
             }
         });
     }
