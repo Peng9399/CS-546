@@ -1,7 +1,15 @@
 const lab1 = require("./lab1");
 
 console.log(lab1.questionOne([5, 3, 10])); 
-// should output 134
+// 134
+console.log(lab1.questionOne([2, 1, 2])); 
+// 9
+console.log(lab1.questionOne([5, 10, 9])); 
+// 206
+console.log(lab1.questionOne([1, 2, 3])); 
+//14
+console.log(lab1.questionOne([3, 4, 5])); 
+//50
 
 console.log(lab1.questionTwo(7)); 
 // should output 13 
