@@ -1,13 +1,10 @@
 const errorChecking = (value, valuename) => {
-    if (isNaN(value)) {
-        throw `${valuename || 'given value'} is NaN`;
+    if (typeof value === "undefined") {
+        console.error( `${valuename || 'given value'} is undefined`);
     } else if (typeof value !== "number") {
-        throw `${valuename || 'given value'} is not a number`;
-    } else if(typeof value === "undefined") {
-        throw `${valuename || 'given value'} is undefined`;
+        console.error( `${valuename || 'given value'} is not a number`);
     }
 }
-
 
 module.exports = {
     volumeOfRectangularPrism: (length, width, height) => {
