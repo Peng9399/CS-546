@@ -59,7 +59,7 @@ try {
 }
 
 try {
-    tester.surfaceAreaOfRectangularPrism(5, 6, 7);
+    tester.surfaceAreaOfRectangularPrism(5, 6, 8);
 } catch (e) {
     console.log('There was an Error:', e);
 }
