@@ -3,7 +3,7 @@ const errorChecking = (value, valuename) => {
         throw `${valuename || 'given value'} is NaN`;
     } else if (typeof value !== "number") {
         throw `${valuename || 'given value'} is not a number`;
-    } else if(typeof value!== "undefined") {
+    } else if(typeof value === "undefined") {
         throw `${valuename || 'given value'} is undefined`;
     }
 }
