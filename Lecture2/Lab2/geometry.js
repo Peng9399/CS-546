@@ -13,7 +13,7 @@ module.exports = {
         errorChecking(height, "height");
 
         const volume = length * width * height;
-        return console.log(volume);
+        return console.log('The volume of a rectangular prism is:', volume);
     },
 
     surfaceAreaOfRectangularPrism: (length, width, height) => {
@@ -22,21 +22,21 @@ module.exports = {
         errorChecking(height, "height");
 
         const Area = 2*((width*length)+(height*length)+(height*width));
-        return console.log(Area);
+        return console.log('The area of a rectangular prism is:', Area);
     },
 
     volumeOfSphere: (radius) => {
         errorChecking(radius, "radius");
 
         const Volume = (4/3)*(Math.PI)(radius*radius*radius);
-        return console.log(Volume);
+        return console.log('The volume of a sphere is:', Volume);
     },
 
     surfaceAreaOfSphere: (radius) => {
         errorChecking(radius, "radius");
 
         const Area = 4*(Math.PI)*(radius*radius);
-        return console.log(Area);
+        return console.log('The area of a sphere is:', Area);
     },
 
 }
