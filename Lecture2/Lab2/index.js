@@ -55,7 +55,7 @@ try {
 }
 
 try {
-    tester.surfaceAreaOfRectangularPrism(10,20,30);
+    tester.surfaceAreaOfRectangularPrism(10,20,-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -88,7 +88,7 @@ try {
 }
 
 try {
-    tester.volumeOfSphere(5);
+    tester.volumeOfSphere(-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -121,7 +121,7 @@ try {
 }
 
 try {
-    tester.surfaceAreaOfSphere(5);
+    tester.surfaceAreaOfSphere(-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }

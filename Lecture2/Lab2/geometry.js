@@ -40,7 +40,7 @@ module.exports = {
         errorChecking(radius, 'radius');
 
         const area = 4 * Math.PI * (radius*radius);
-        return console.log('The area of a sphere is:', area);
+        return console.log('The surface area of a sphere is:', area);
     },
 
 }
