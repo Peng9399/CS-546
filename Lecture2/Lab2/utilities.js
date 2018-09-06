@@ -6,6 +6,14 @@ const equalityError = (value, valuename) => {
     }
 }
 
+const arrayError = (array, valuename) => {
+    if (typeof array === 'undefined') {
+        throw `${valuename || 'given value'} is undefined`;
+    } else if(!Array.isArray(array)) {
+        throw `${valuename || 'given value'} is not an array`;
+    }
+}
+
 const deepEquality = (obj1, obj2) => {
     equalityError(obj1, 'Object 1');
     equalityError(obj2, 'Object 2');
@@ -23,10 +31,11 @@ const deepEquality = (obj1, obj2) => {
        const obj1Name = obj1Keys[i]
        const obj2Name = obj2Keys[i]
 
+
        if (obj1Name !== obj2Name) {
             checker = false;
             return console.log(`The Objects equality are: ${checker}`);
-       } else if (obj1Name[i] !== obj2Name[i]) {
+       } else if (obj1[obj1Name] !== obj2[obj2Name]) {
            checker = false;
            return console.log(`The Objects equality are: ${checker}`);
        }
@@ -37,12 +46,21 @@ const deepEquality = (obj1, obj2) => {
 
 }
 
-//deepEquality({ a: 1, b: 2 }, { a: 1 });
-//deepEquality({ a: 1, b: 2 }, { a: 1, b:2 });
-//deepEquality({ a: 1 }, function test() {});
-//deepEquality({ a: 1 });
+
+const uniqueElements = (arr) => {
+    arrayError(arr)
+    const list = []
+    arr.forEach(element => {
+       if(!list.includes(element)){
+           list.push(element)
+       }
+    });
+
+    return console.log(`The amount of unique elements are: ${list.length}`);
+}
 
 module.exports = {
     deepEquality,
+    uniqueElements
 
 }

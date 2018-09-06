@@ -1,5 +1,5 @@
 const tester = require('./geometry')
-//const utilitieTester = require('./utilities')
+const utilitieTester = require('./utilities')
 
 // 5 cases for volume of a rectangular prism
 
@@ -128,6 +128,39 @@ try {
 
 try {
     tester.surfaceAreaOfSphere(6);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+//5 cases for deep equality
+console.log('\n')
+
+try {
+    utilitieTester.deepEquality({ test: 1 });
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.deepEquality('test string', {test: 1 });
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.deepEquality({ test: 1, name: 2 }, false);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.deepEquality({ test: 1, name: 2, name: 3}, { test: 1, name: 2, name: 4});
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.deepEquality({ test: 1, name: 2 }, { test: 1, name: 2});
 } catch (e) {
     console.log('There was an Error:', e);
 }
