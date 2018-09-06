@@ -3,6 +3,10 @@ const errorChecking = (value, valuename) => {
         throw `${valuename || 'given value'} is undefined`;
     } else if (typeof value !== 'number') {
         throw `${valuename || 'given value'} is not a number`;
+    } else if(Math.sign(value) === -1){
+        throw `${valuename || 'given value'} is negative`;
+    } else if(Math.sign(value) === 0){
+        throw `${valuename || 'given value'} is zero`;
     }
 }
 

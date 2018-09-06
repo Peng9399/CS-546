@@ -22,7 +22,7 @@ try {
 }
 
 try {
-    tester.volumeOfRectangularPrism(10,20,30);
+    tester.volumeOfRectangularPrism(10,20,-6);
 } catch (e) {
     console.log('There was an Error:', e);
 }
