@@ -37,12 +37,10 @@ const deepEquality = (obj1, obj2) => {
        } else if (obj1[obj1Name] !== obj2[obj2Name]) {
            checker = false;
            return console.log(`The Objects equality are: ${checker}`);
-       }
-      
+       }    
    }
 
     return console.log(`The Objects equality are: ${checker}`);
-
 }
 
 
@@ -54,7 +52,7 @@ const uniqueElements = (arr) => {
            list.push(element)
        }
     });
-
+    
     return console.log(`The amount of unique elements are: ${list.length}`);
 }
 
