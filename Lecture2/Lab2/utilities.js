@@ -67,7 +67,7 @@ const uniqueElements = (arr) => {
 }
 
 const countOfEachCharacterInString = (str) => {
-    stringError(str, "Given String");
+    stringError(str, 'Given String');
     const list = [];
     const obj = {};
 
