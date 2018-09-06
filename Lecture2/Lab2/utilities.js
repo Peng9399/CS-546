@@ -68,7 +68,33 @@ const uniqueElements = (arr) => {
 
 const countOfEachCharacterInString = (str) => {
     stringError(str);
+    const list = [];
+    const obj = {};
+
+    for(let i = 0; i < str.length; i++){         
+        if(!list.includes(str.charAt(i))){    //this parses the string and grabs the unique characters from the string
+            list.push(str.charAt(i))
+        }
+    }
+
+    list.sort()        //sorts the list normally
+
+    list.forEach(element => {
+        let sum = 0;
+        for(let i = 0; i < str.length; i++){
+            if(str.charAt(i) === element){
+                sum = sum + 1;
+                obj[`${element}`] = sum
+            }
+        }
+    });
+
+
+   return console.log(obj);
 }
+
+
+countOfEachCharacterInString("Hello, the pie is in the oven")
 
 module.exports = {
     deepEquality,
