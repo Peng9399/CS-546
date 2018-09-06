@@ -83,7 +83,7 @@ const countOfEachCharacterInString = (str) => {
         let sum = 0;
         for(let i = 0; i < str.length; i++){       
             if(str.charAt(i) === element){     //compares each letter at string i to the letter in the list
-                sum = sum + 1;             //adds 1 for every duplicate of the same unique letter it finds    ct
+                sum = sum + 1;             //adds 1 for every duplicate of the same unique letter it finds
             }
             obj[element] = sum   //adds new key value pair to object
         }
