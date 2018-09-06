@@ -5,7 +5,7 @@ const errorChecking = (value, valuename) => {
         throw `${valuename || 'given value'} is not a number`;
     } else if(Math.sign(value) === -1){                              // area or volume cant have a ngetaive distance
         throw `${valuename || 'given value'} is negative`;
-    } else if(Math.sign(value) === 0){                             // side length cant be zero
+    } else if(Math.sign(value) === 0){                             // side length or radius cant be zero
         throw `${valuename || 'given value'} is zero`;
     }
 }
