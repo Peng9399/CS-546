@@ -31,7 +31,6 @@ const deepEquality = (obj1, obj2) => {
        const obj1Name = obj1Keys[i]
        const obj2Name = obj2Keys[i]
 
-
        if (obj1Name !== obj2Name) {
             checker = false;
             return console.log(`The Objects equality are: ${checker}`);

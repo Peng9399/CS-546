@@ -154,13 +154,22 @@ try {
 }
 
 try {
-    utilitieTester.deepEquality({ test: 1, name: 2, name: 3}, { test: 1, name: 2, name: 4});
+    utilitieTester.deepEquality({ test: 1, name: 2, name: 3}, { test: 1, name: 2});
 } catch (e) {
     console.log('There was an Error:', e);
 }
 
 try {
     utilitieTester.deepEquality({ test: 1, name: 2 }, { test: 1, name: 2});
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+//5 cases for unique element
+console.log('\n')
+
+try {
+    utilitieTester.uniqueElements;
 } catch (e) {
     console.log('There was an Error:', e);
 }
