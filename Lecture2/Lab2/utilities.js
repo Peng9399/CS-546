@@ -67,7 +67,7 @@ const uniqueElements = (arr) => {
 }
 
 const countOfEachCharacterInString = (str) => {
-    stringError(str);
+    stringError(str, "Given String");
     const list = [];
     const obj = {};
 
@@ -91,9 +91,6 @@ const countOfEachCharacterInString = (str) => {
 
    return console.log(obj);
 }
-
-
-countOfEachCharacterInString("Hello, the pie is in the oven")
 
 module.exports = {
     deepEquality,

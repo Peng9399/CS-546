@@ -197,3 +197,37 @@ try {
 } catch (e) {
     console.log('There was an Error:', e);
 }
+
+//5 cases for count of each character
+console.log('\n')
+
+try {
+    utilitieTester.countOfEachCharacterInString();
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString(false);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+
+try {
+    utilitieTester.countOfEachCharacterInString({test:1});
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString("My name is: Jonathan");
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString("Hello, the pie is in the oven");
+} catch (e) {
+    console.log('There was an Error:', e);
+}
