@@ -14,6 +14,16 @@ const arrayError = (array, valuename) => {
     }
 }
 
+const stringError = (value, valuename) => {
+    if (typeof value === 'undefined') {
+        throw `${valuename || 'given value'} is undefined`;
+    } else if(typeof value !== 'string') {
+        throw `${valuename || 'given value'} is not a string`;
+    }
+}
+
+
+
 const deepEquality = (obj1, obj2) => {
     equalityError(obj1, 'Object 1');
     equalityError(obj2, 'Object 2');
@@ -23,19 +33,19 @@ const deepEquality = (obj1, obj2) => {
     const obj2Keys = Object.getOwnPropertyNames(obj2);
 
     if(obj1Keys.length !== obj2Keys.length) {
-        checker = false;
-        return console.log(`The Objects equality are: ${checker}`);
+        checker = false;                                              // checks if length is different first
+        return console.log(`The Objects equality are: ${checker}`);  
     }
 
    for(let i = 0; i < obj1Keys.length; i++){
        const obj1Name = obj1Keys[i]
        const obj2Name = obj2Keys[i]
 
-       if (obj1Name !== obj2Name) {
+       if (obj1Name !== obj2Name) {          //compares the names at i to check if names are the same
             checker = false;
             return console.log(`The Objects equality are: ${checker}`);
-       } else if (obj1[obj1Name] !== obj2[obj2Name]) {
-           checker = false;
+       } else if (obj1[obj1Name] !== obj2[obj2Name]) {                     //checks to see if the key value pairs are the same
+           checker = false; 
            return console.log(`The Objects equality are: ${checker}`);
        }    
    }
@@ -48,7 +58,7 @@ const uniqueElements = (arr) => {
     arrayError(arr, 'Given Array')
     const list = []
     arr.forEach(element => {
-       if(!list.includes(element)){
+       if(!list.includes(element)){        //if the list doesnt include the value in the array it pushes new unique element
            list.push(element)
        }
     });
@@ -56,8 +66,12 @@ const uniqueElements = (arr) => {
     return console.log(`The amount of unique elements are: ${list.length}`);
 }
 
+const countOfEachCharacterInString = (str) => {
+    stringError(str);
+}
+
 module.exports = {
     deepEquality,
-    uniqueElements
-
+    uniqueElements,
+    countOfEachCharacterInString
 }
