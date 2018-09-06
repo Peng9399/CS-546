@@ -45,14 +45,14 @@ const deepEquality = (obj1, obj2) => {
 
 
 const uniqueElements = (arr) => {
-    arrayError(arr)
+    arrayError(arr, 'Given Array')
     const list = []
     arr.forEach(element => {
        if(!list.includes(element)){
            list.push(element)
        }
     });
-    
+
     return console.log(`The amount of unique elements are: ${list.length}`);
 }
 

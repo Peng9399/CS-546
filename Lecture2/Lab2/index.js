@@ -169,7 +169,31 @@ try {
 console.log('\n')
 
 try {
-    utilitieTester.uniqueElements;
+    utilitieTester.uniqueElements('tester');
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.uniqueElements(56);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.uniqueElements();
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.uniqueElements(["a", "a", "b", "a", "b", "c"]);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.uniqueElements(["a", "a", "b", "a", "b", "c", 1, 1, 2, 2, 3, 4, 4, 4, 4, 4]);
 } catch (e) {
     console.log('There was an Error:', e);
 }
