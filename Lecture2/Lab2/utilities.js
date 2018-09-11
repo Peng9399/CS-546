@@ -67,7 +67,7 @@ const uniqueElements = (arr) => {
 }
 
 const countOfEachCharacterInString = (str) => {
-    stringError(str);
+    stringError(str, 'Given String');
     const list = [];
     const obj = {};
 
@@ -85,15 +85,14 @@ const countOfEachCharacterInString = (str) => {
             if(str.charAt(i) === element){     // compares each letter at string i to the letter in the list
                 sum = sum + 1;             // adds 1 for every duplicate of the same unique letter it finds
             }
-            obj[element] = sum   //adds new key value pair to object
+            
+        obj[element] = sum   //adds new key value pair to object
+
         }
     });
 
    return console.log(obj);
 }
-
-
-countOfEachCharacterInString("Hello, the pie is in the oven")
 
 module.exports = {
     deepEquality,

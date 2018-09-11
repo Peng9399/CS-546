@@ -22,7 +22,7 @@ try {
 }
 
 try {
-    tester.volumeOfRectangularPrism(10,20,30);
+    tester.volumeOfRectangularPrism(10,20,-6);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -55,7 +55,7 @@ try {
 }
 
 try {
-    tester.surfaceAreaOfRectangularPrism(10,20,30);
+    tester.surfaceAreaOfRectangularPrism(10,20,-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -88,7 +88,7 @@ try {
 }
 
 try {
-    tester.volumeOfSphere(5);
+    tester.volumeOfSphere(-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -121,7 +121,7 @@ try {
 }
 
 try {
-    tester.surfaceAreaOfSphere(5);
+    tester.surfaceAreaOfSphere(-5);
 } catch (e) {
     console.log('There was an Error:', e);
 }
@@ -194,6 +194,40 @@ try {
 
 try {
     utilitieTester.uniqueElements(["a", "a", "b", "a", "b", "c", 1, 1, 2, 2, 3, 4, 4, 4, 4, 4]);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+//5 cases for count of each character
+console.log('\n')
+
+try {
+    utilitieTester.countOfEachCharacterInString();
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString(false);
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+
+try {
+    utilitieTester.countOfEachCharacterInString({test:1});
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString("My name is: Jonathan");
+} catch (e) {
+    console.log('There was an Error:', e);
+}
+
+try {
+    utilitieTester.countOfEachCharacterInString("Hello, the pie is in the oven");
 } catch (e) {
     console.log('There was an Error:', e);
 }
