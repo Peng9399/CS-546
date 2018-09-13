@@ -31,16 +31,52 @@ async function getFileAsJSON(path) {
     }
 }
 
+async function saveStringToFile(path, text) {
+    if (!path){
+        throw "You must provide a path";
+    }
+    if(!text) {
+        throw "You must provide text";
+    }
+
+    if(typeof text !== "string") {
+        throw "You must provide a valid string";
+    }
+
+    try {
+        await fs.writeFileAsync(path, text, 'utf-8')
+        return true;
+        
+    } catch (error) {
+        throw error;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 async function main () {
     const fileData = await getFileAsString('./chapter1.txt')
     .catch(error => {
         return error;
     });
 
-    const fileData2 = await getFileAsJSON('./chapter1.txt')
+    const fileData2 = await getFileAsJSON('./package.json')
     .catch(error => {
         return error;
     });
+
+    await saveStringToFile("./message.txt", "Hello Lab 3 test");
     console.log(fileData2);
 }
 
@@ -49,5 +85,7 @@ main();
 
 
 module.exports = {
-
+    getFileAsString,
+    getFileAsJSON,
+    saveStringToFile
 }
