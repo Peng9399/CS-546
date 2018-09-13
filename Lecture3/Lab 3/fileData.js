@@ -32,10 +32,10 @@ async function getFileAsJSON(path) {
 }
 
 async function saveStringToFile(path, text) {
-    if (!path){
+    if (!path || typeof path === "undefined"){
         throw "You must provide a path";
     }
-    if(!text) {
+    if(!text || typeof text === "undefined") {
         throw "You must provide text";
     }
 
@@ -45,47 +45,68 @@ async function saveStringToFile(path, text) {
 
     try {
         await fs.writeFileAsync(path, text, 'utf-8')
-        return true;
+        return console.log("true");
+        
+    } catch (error) {
+        throw error;
+    }
+
+}
+
+async function saveJSONToFile(path, obj) {
+
+    if (!path || typeof path === "undefined"){
+        throw "You must provide a path";
+    }
+    if(!obj || typeof obj === "undefined") {
+        throw "You must provide an object";
+    }
+
+    if(typeof obj !== "object") {
+        throw "You must provide a valid object";
+    }
+
+    try {
+        const textConverted = JSON.stringify(obj)
+        await fs.writeFileAsync(path, textConverted, 'utf-8')
+        return console.log("true");
         
     } catch (error) {
         throw error;
     }
 
 
-
 }
-
-
-
-
-
-
-
-
-
 
 
 async function main () {
     const fileData = await getFileAsString('./chapter1.txt')
     .catch(error => {
-        return error;
+        return console.log(error);
     });
 
     const fileData2 = await getFileAsJSON('./package.json')
     .catch(error => {
-        return error;
+        return console.log(error);
     });
-
-    await saveStringToFile("./message.txt", "Hello Lab 3 test");
     console.log(fileData2);
+
+    const filedata3 = await saveStringToFile("Hello Lab 3 test")
+    .catch(error => {
+        return console.log(error);
+    });
 }
 
 
-main();
+//main();
+
+//getFileAsJSON("sampleJSON.json")
+//saveStringToFile("stringTest.txt","This is valid input!")
 
 
 module.exports = {
     getFileAsString,
     getFileAsJSON,
-    saveStringToFile
+    saveStringToFile,
+    saveJSONToFile
 }
