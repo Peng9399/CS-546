@@ -1,4 +1,15 @@
+const errorChecking = value => {
+    if (typeof value === 'undefined') {
+        throw 'string is undefined';
+    } else if(typeof value !== 'string') {
+        throw 'This is not a valid string';
+    }
+}
+
+
 const createMetrics = (text) => {
+    errorChecking(text);            //error checking before we continue with rest of code
+
     const objectMetrics = {};          //total object we are returning
     const words = [];
 
@@ -64,7 +75,6 @@ const createMetrics = (text) => {
 
     const wordsObject = () => {
         const placerObject = {};          //dictionary we are using to store
-
         uniqueWords.forEach(uniqueValue => {
         let sum = 0;
         totalWords.forEach(totalValue =>{
@@ -95,26 +105,8 @@ const createMetrics = (text) => {
 
 }
 
-//createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
+createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
 //createMetrics("\nI! saw Susie 17384 sitting $$in a shoe shine \n \n \n \nshop. Where she\t sits she shines, 1and where she\t shines 456she sits&^&%$#\n.");
-
-//REMEMBER TO CHECK FOR ERRORS
-
-
-
-
-//{
-//     totalLetters: total number of letter characters in the text,
-//     totalNonLetters: total number of non-letters in the text,
-//     totalVowels: total number of vowels in the text (not counting y),
-//     totalConsonants: total number of consonants in the text (counting y),
-//     totalWords: total number of words in the text; a word is defined as any sequence of letters broken by any not-letter. For example, the phrase to-do is two words; a word does not start until a letter appears,
-//     uniqueWords: total number of unique words that appear in the lowercased text,
-//     longWords: number of words in the text that are 6 or more letters long; this is a total count of individual words, not unique words,
-//     averageWordLength: the average number of letters in a word in the text; this is counting the individual words, not unique words,
-//     wordOccurrences: a dictionary of each word and how many times each word occurs in the text.
-//}
-
 
 
 module.exports = {
