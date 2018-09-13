@@ -30,8 +30,8 @@ const createMetrics = (text) => {
             wordString += textLetter;    //concatinates the string with the current letter
         } else {
             nonLetters = nonLetters + 1;     //if its not a letter it adds to non letter
-            words.push(wordString);         //pushes the real word to the array
-            wordString = '';                //if its not a word it just resets wordstring
+            words.push(wordString);         //pushes the real word to the array because it found a non letter
+            wordString = '';                //after pushing the real word, it resets the string to find next letter
         }
 
 
