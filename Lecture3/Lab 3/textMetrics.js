@@ -1,5 +1,5 @@
 const createMetrics = (text) => {
-    const objectMetrics = {};
+    const objectMetrics = {};          //total object we are returning
     const words = [];
 
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -49,7 +49,9 @@ const createMetrics = (text) => {
         return index === totalWords.indexOf(value);         //this checks the new filtered totalwords for the correct index of each word, if duplicate, it doesnt find it
     });
 
-
+    const longWords = totalWords.filter(value => {
+        return value.length >= 6;
+    });
 
     objectMetrics["totalLetters"] = letters;
     objectMetrics["totalNonLetters"] = nonLetters - 1;
@@ -57,16 +59,19 @@ const createMetrics = (text) => {
     objectMetrics["totalConsonants"] = consenentsNumber;
     objectMetrics["totalWords"] = totalWords.length;
     objectMetrics["uniqueWords"] = uniqueWords.length;
+    objectMetrics["longWords"] = longWords.length;
 
 
 
-    console.log(uniqueWords);
-    console.log(totalWords);
+ //   console.log(uniqueWords);
+ //   console.log(totalWords);
+ //   console.log(longWords)
     return console.log(objectMetrics);
 
 }
 
 createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
+//createMetrics("\nI! saw Susie 17384 sitting $$in a shoe shine \n \n \n \nshop. Where she\t sits she shines, 1and where she\t shines 456she sits&^&%$#\n.");
 
 //REMEMBER TO CHECK FOR ERRORS
 
