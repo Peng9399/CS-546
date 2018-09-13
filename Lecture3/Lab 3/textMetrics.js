@@ -1,5 +1,6 @@
 const createMetrics = (text) => {
     const objectMetrics = {};          //total object we are returning
+    const placerObject = {};          //dictionary we are using to store
     const words = [];
 
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -53,17 +54,39 @@ const createMetrics = (text) => {
         return value.length >= 6;
     });
 
-    objectMetrics["totalLetters"] = letters;
+    const averageWordLength = () => {         //function that takes all the total words, and just counts the value of each one and gets average length
+        let sum = 0;
+        totalWords.forEach(value => {
+            sum = sum + value.length;
+        });
+
+        return sum / totalWords.length;
+    }
+
+    uniqueWords.forEach(uniqueValue => {
+        let sum = 0;
+        totalWords.forEach(totalValue =>{
+            if (totalValue === uniqueValue) {
+                sum = sum + 1;
+            }
+        });
+        placerObject[uniqueValue] = sum;
+    });
+
+    
+    objectMetrics["totalLetters"] = letters;                 //adding all the object values to be exported 
     objectMetrics["totalNonLetters"] = nonLetters - 1;
     objectMetrics["totalVowels"] = vowelsNumber;
     objectMetrics["totalConsonants"] = consenentsNumber;
     objectMetrics["totalWords"] = totalWords.length;
     objectMetrics["uniqueWords"] = uniqueWords.length;
     objectMetrics["longWords"] = longWords.length;
+    objectMetrics["averageWordLength"] = averageWordLength();
+    objectMetrics["wordOccurrences"] = placerObject;
 
 
 
- //   console.log(uniqueWords);
+//   console.log(uniqueWords);
  //   console.log(totalWords);
  //   console.log(longWords)
     return console.log(objectMetrics);
