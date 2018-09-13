@@ -6,7 +6,6 @@ const errorChecking = value => {
     }
 }
 
-
 const createMetrics = (text) => {
     errorChecking(text);            //error checking before we continue with rest of code
 
