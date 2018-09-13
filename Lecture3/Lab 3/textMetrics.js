@@ -1,6 +1,5 @@
 const createMetrics = (text) => {
     const objectMetrics = {};          //total object we are returning
-    const placerObject = {};          //dictionary we are using to store
     const words = [];
 
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -63,7 +62,10 @@ const createMetrics = (text) => {
         return sum / totalWords.length;
     }
 
-    uniqueWords.forEach(uniqueValue => {
+    const wordsObject = () => {
+        const placerObject = {};          //dictionary we are using to store
+
+        uniqueWords.forEach(uniqueValue => {
         let sum = 0;
         totalWords.forEach(totalValue =>{
             if (totalValue === uniqueValue) {
@@ -72,6 +74,9 @@ const createMetrics = (text) => {
         });
         placerObject[uniqueValue] = sum;
     });
+
+    return placerObject;
+}
 
     
     objectMetrics["totalLetters"] = letters;                 //adding all the object values to be exported 
@@ -82,18 +87,15 @@ const createMetrics = (text) => {
     objectMetrics["uniqueWords"] = uniqueWords.length;
     objectMetrics["longWords"] = longWords.length;
     objectMetrics["averageWordLength"] = averageWordLength();
-    objectMetrics["wordOccurrences"] = placerObject;
+    objectMetrics["wordOccurrences"] = wordsObject();
 
 
 
-//   console.log(uniqueWords);
- //   console.log(totalWords);
- //   console.log(longWords)
     return console.log(objectMetrics);
 
 }
 
-createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
+//createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
 //createMetrics("\nI! saw Susie 17384 sitting $$in a shoe shine \n \n \n \nshop. Where she\t sits she shines, 1and where she\t shines 456she sits&^&%$#\n.");
 
 //REMEMBER TO CHECK FOR ERRORS
