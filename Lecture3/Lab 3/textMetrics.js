@@ -75,8 +75,8 @@ const createMetrics = (text) => {
     const wordsObject = () => {
         const placerObject = {};          //dictionary we are using to store
         uniqueWords.forEach(uniqueValue => {
-        let sum = 0;
-        totalWords.forEach(totalValue =>{
+        let sum = 0;                            //this will go through each unique value and compare to every word possible and add if duplicate found
+        totalWords.forEach(totalValue =>{  
             if (totalValue === uniqueValue) {
                 sum = sum + 1;
             }
