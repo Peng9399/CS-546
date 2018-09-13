@@ -1,40 +1,42 @@
 const createMetrics = (text) => {
     const objectMetrics = {};
-    const words = [];
+    const words = text.split(" ");
 
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
     'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     const vowels = ['a', 'e', 'i', 'o', 'u'];
     const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's',
     't', 'v', 'w', 'x', 'y', 'z'];
-    const special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
     let letters = 0;
     let nonLetters = 0;
     let vowelsNumber = 0;
     let consenentsNumber = 0;
+
     for(let i = 0; i< text.length; i++){
         const textLetter = text.charAt(i).toLowerCase();
 
-        if()
+        if(alphabet.includes(textLetter)) {    //sees if its a letter
+            letters = letters + 1;
+        } else {
+            nonLetters = nonLetters + 1;     //if its not a letter it adds to non letter
+        }
 
-        alphabet.forEach(value => {         //loops through alphabet list and if it matches a letter its a letter, if not, its a non letter
-            if(textLetter === value) {
-                letters = letters + 1;
-            }
-        });
 
-        vowels.forEach(value => {              // loops through vowels and if its a vowel
+        vowels.forEach(value => {              // loops through vowels and adds 1 if its a value
             if(textLetter === value ) {
                 vowelsNumber = vowelsNumber + 1;
             }
         });
 
-        consonants.forEach(value => {              // loops through vowels and if its a vowel
+        consonants.forEach(value => {              // loops through constents and if its a consonant adds 1
             if(textLetter === value ) {
                 consenentsNumber = consenentsNumber + 1;
             }
         });
+
+
+
     }
 
     objectMetrics["totalLetters"] = letters;
@@ -44,7 +46,7 @@ const createMetrics = (text) => {
 
 
 
-
+  //  console.log(words)
     return console.log(objectMetrics);
 
 }
