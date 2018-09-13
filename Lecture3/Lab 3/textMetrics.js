@@ -7,6 +7,7 @@ const createMetrics = (text) => {
     const vowels = ['a', 'e', 'i', 'o', 'u'];
     const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's',
     't', 'v', 'w', 'x', 'y', 'z'];
+    const special = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
     let letters = 0;
     let nonLetters = 0;
@@ -15,11 +16,11 @@ const createMetrics = (text) => {
     for(let i = 0; i< text.length; i++){
         const textLetter = text.charAt(i).toLowerCase();
 
+        if()
+
         alphabet.forEach(value => {         //loops through alphabet list and if it matches a letter its a letter, if not, its a non letter
             if(textLetter === value) {
                 letters = letters + 1;
-            } else if(textLetter !== value) {
-                nonLetters = nonLetters + 1;
             }
         });
 
