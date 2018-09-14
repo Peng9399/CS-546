@@ -99,7 +99,7 @@ const createMetrics = (text) => {
     objectMetrics["wordOccurrences"] = wordsObject();
 
 
-
+    
     return console.log(objectMetrics);
 
 }
