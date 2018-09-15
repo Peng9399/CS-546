@@ -7,16 +7,15 @@ async function tester (path) {
     const result = path.split('/').pop().split('.');
     const resultJson = result[0] + '.result.json';
 
-   fs.existsAsync(resultJson).catch(error=> {
-         return  console.log(error);
-   });
+  const test = await fs.statAsync('tester.json')
+  console.log(test);
     
+
+    // https://www.gregjs.com/javascript/2016/checking-whether-a-file-directory-exists-without-using-fs-exists/
 
     // if(fs.existsAsync(resultJson)) {
     //       dataFile.getFileAsJSON(resultJson);
     // }
 
 }
- tester('./chapter1.txt').catch(error => {
-     console.log("Error", e);
- });
+ tester('./chapter1.txt')
