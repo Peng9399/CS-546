@@ -85,7 +85,7 @@ async function main () {
         return console.log(error);
     });
 
-    const fileData2 = await getFileAsJSON('./package.json')
+    const fileData2 = await getFileAsJSON('./chapter1.result.json')
     .catch(error => {
         return console.log(error);
     });
