@@ -7,9 +7,9 @@ async function tester (path) {
     const result = path.split('/').pop().split('.');
     const resultJson = result[0] + '.result.json';
 
-   if (fs.existsAsync(resultJson)){
-       console.log(true);
-   }
+   fs.existsAsync(resultJson).catch(error=> {
+         return  console.log(error);
+   });
     
 
     // if(fs.existsAsync(resultJson)) {
@@ -17,4 +17,6 @@ async function tester (path) {
     // }
 
 }
- tester('./chapter1.txt');
+ tester('./chapter1.txt').catch(error => {
+     console.log("Error", e);
+ });
