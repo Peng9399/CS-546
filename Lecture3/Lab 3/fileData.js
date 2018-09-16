@@ -7,7 +7,7 @@ async function getFileAsString(path) {
     }
 
     if(path === undefined || typeof path !== "string"){
-        throw "You must provide a string"
+        throw "You must provide a string";
     }
 
     try {
@@ -26,7 +26,7 @@ async function getFileAsJSON(path) {
     }
 
     if(path === undefined || typeof path !== "string"){
-        throw "You must provide a string"
+        throw "You must provide a string";
     }
 
     try {
@@ -43,6 +43,11 @@ async function saveStringToFile(path, text) {
     if (!path || typeof path === "undefined"){
         throw "You must provide a path";
     }
+
+    if(typeof path !== "string") {
+        throw "You must provide a valid string";
+    }
+
     if(!text || typeof text === "undefined") {
         throw "You must provide text";
     }
@@ -50,6 +55,7 @@ async function saveStringToFile(path, text) {
     if(typeof text !== "string") {
         throw "You must provide a valid string";
     }
+
 
     try {
         await fs.writeFileAsync(path, text, 'utf-8')
@@ -66,6 +72,11 @@ async function saveJSONToFile(path, obj) {
     if (!path || typeof path === "undefined"){
         throw "You must provide a path";
     }
+
+    if(typeof path !== "string") {
+        throw "You must provide a valid string";
+    }
+
     if(!obj || typeof obj === "undefined") {
         throw "You must provide an object";
     }
