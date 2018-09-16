@@ -12,7 +12,7 @@ async function tester (path) {
   //   tester = await dataFile.getFileAsJSON(resultJson) 
   //   console.log(tester);
   // })
-  // .catch(error => {
+  // .catch(error => {\
   //   console.log("No such file was found");
   // })
   
