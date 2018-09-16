@@ -104,9 +104,6 @@ const createMetrics = (text) => {
 
 }
 
-createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23");
-//createMetrics("\nI! saw Susie 17384 sitting $$in a shoe shine \n \n \n \nshop. Where she\t sits she shines, 1and where she\t shines 456she sits&^&%$#\n.");
-
 
 module.exports = {
     createMetrics,

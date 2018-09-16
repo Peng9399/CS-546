@@ -6,6 +6,10 @@ async function getFileAsString(path) {
         throw "You must provide a path";
     }
 
+    if(path === undefined || typeof path !== "string"){
+        throw "You must provide a string"
+    }
+
     try {
 
     const stringFile = await fs.readFileAsync(path, "utf-8");
@@ -19,6 +23,10 @@ async function getFileAsString(path) {
 async function getFileAsJSON(path) {
     if(!path) {
         throw "You must provide a path";
+    }
+
+    if(path === undefined || typeof path !== "string"){
+        throw "You must provide a string"
     }
 
     try {
@@ -77,31 +85,6 @@ async function saveJSONToFile(path, obj) {
 
 
 }
-
-
-async function main () {
-    const fileData = await getFileAsString('./chapter1.txt')
-    .catch(error => {
-        return console.log(error);
-    });
-
-    const fileData2 = await getFileAsJSON('./chapter1.result.json')
-    .catch(error => {
-        return console.log(error);
-    });
-    console.log(fileData2);
-
-    const filedata3 = await saveStringToFile("Hello Lab 3 test")
-    .catch(error => {
-        return console.log(error);
-    });
-}
-
-
-//main();
-
-//getFileAsJSON("sampleJSON.json")
-//saveStringToFile("stringTest.txt","This is valid input!")
 
 
 module.exports = {
