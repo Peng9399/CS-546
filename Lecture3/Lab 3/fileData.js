@@ -45,7 +45,7 @@ async function saveStringToFile(path, text) {
     }
 
     if(typeof path !== "string") {
-        throw "You must provide a valid string";
+        throw "You must provide a valid path";
     }
 
     if(!text || typeof text === "undefined") {
@@ -74,7 +74,7 @@ async function saveJSONToFile(path, obj) {
     }
 
     if(typeof path !== "string") {
-        throw "You must provide a valid string";
+        throw "You must provide a valid path";
     }
 
     if(!obj || typeof obj === "undefined") {
