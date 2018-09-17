@@ -16,7 +16,9 @@ async function tester(file) {
         if (error.code === "ENOENT") {
             let stringContents = await dataFile.getFileAsString(file);
             let objectContents = await metrics.createMetrics(stringContents);
-            let saveJSON = await dataFile.saveJSONToFile(resultJson, objectContents);
+
+            await dataFile.saveJSONToFile(resultJson, objectContents);
+
             let parseFile = await dataFile.getFileAsJSON(resultJson);
             console.log(parseFile);
         } else {
@@ -25,7 +27,7 @@ async function tester(file) {
     }
 
 }
-tester(4).catch(error => {
+tester('./chapter1.txt').catch(error => {
     console.log('There was an error: ', error);
 })
 
