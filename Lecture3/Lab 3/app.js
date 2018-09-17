@@ -5,6 +5,7 @@ async function tester(file) {
     if (typeof file !== "string" || !file) {
         throw "Please enter a correct file path"
     }
+    
     const result = file.split('/').pop().split('.');
     const resultJson = result[0] + '.result.json';
 
