@@ -1,7 +1,5 @@
 const dataFile = require("./fileData");
 const metrics = require("./textMetrics");
-const bluebird = require("bluebird");
-const fs = bluebird.promisifyAll(require("fs"));
 
 async function tester (file) {
     const result = file.split('/').pop().split('.');
