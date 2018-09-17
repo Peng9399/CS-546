@@ -100,7 +100,7 @@ const createMetrics = (text) => {
 
 
     
-    return console.log(objectMetrics);
+    return objectMetrics;
 
 }
 
