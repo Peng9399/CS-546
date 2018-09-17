@@ -8,15 +8,15 @@ async function tester (file) {
     const resultJson = result[0] + '.result.json';
 
     try {
-        let result = await dataFile.getFileAsJSON(resultJson)
-        console.log(result);
+        let fileRead = await dataFile.getFileAsJSON(resultJson)
+        console.log(fileRead);
     } catch (error) {
         if(error.code === "ENOENT") {
-            let string = await dataFile.getFileAsString(file);
-            let obj = await metrics.createMetrics(string);
-            let saveJSON = await dataFile.saveJSONToFile(resultJson, obj);
-            let newResult = await dataFile.getFileAsJSON(resultJson);
-            console.log(newResult);
+            let stringContents = await dataFile.getFileAsString(file);
+            let objectContents = await metrics.createMetrics(stringContents);
+            let saveJSON = await dataFile.saveJSONToFile(resultJson, objectContents);
+            let parseFile = await dataFile.getFileAsJSON(resultJson);
+            console.log(parseFile);
         } else {
             throw error;
         }
