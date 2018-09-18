@@ -37,5 +37,5 @@ tester('./chapter2.txt').catch(error => {
 })
 
 tester('./chapter3.txt').catch(error => {
-     console.log(error);
+    console.log('There was an error: ', error);
  })
