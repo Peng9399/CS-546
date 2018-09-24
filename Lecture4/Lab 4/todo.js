@@ -57,15 +57,15 @@ async function completeTask(taskId) {
         throw 'No id was provided';
     }
 
-    const todoCollection = await todoItems();
-    const time = new Date();       //gets currrent time of system
+    const todoCollection = await toDoItems();
+    const time = new Date();
 
     const updateTask = {
         completed: true,
         completedAt: time
-    }
+    };
 
-    const updateInfo = await todoCollection.updateOne({_id: taskId}, updateTask);  //updates task with task id, and object
+    const updateInfo = await todoCollection.updateOne({ _id: taskId }, {$set: updateTask});  //updates task with task id, and object
     if (updateInfo.modifiedCount === 0) throw 'could not update task sucessfully';
 
     return await this.getTask(taskId);  //returns the task to the given id after information is updates
@@ -78,7 +78,7 @@ async function removeTask(id) {
         throw 'No id was provided';
     }
 
-    const todoCollection = await todoItems();
+    const todoCollection = await toDoItems();
     const deletionInfo = await todoCollection.removeOne({_id: id});
 
     if (deletionInfo.deletedCount === 0) {

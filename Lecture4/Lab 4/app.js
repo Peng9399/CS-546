@@ -14,17 +14,24 @@ const secondTask = {
 const main = async () => {
     const taskOneInsert = await toDoItems.createTask(firstTask.title, firstTask.description)
     console.log(taskOneInsert);
+    console.log("\n")
 
     const taskTwoInsert = await toDoItems.createTask(secondTask.title, secondTask.description);
 
     const getAll = await toDoItems.getAllTasks();
     console.log(getAll);
+    console.log("\n")
 
-   // await toDoItems.removeTask(taskOneInsert._id)          //removes the first task
+    await toDoItems.removeTask(taskOneInsert._id)          //removes the first task
     
+    const getAllAgain = await toDoItems.getAllTasks();
+    console.log(getAllAgain);
+    console.log("\n")
+ 
+    await toDoItems.completeTask(taskTwoInsert._id)      //updates the second taks
 
-
-
+    const updatedSecondTask = await toDoItems.getTask(taskTwoInsert._id)
+    console.log(updatedSecondTask);
 
 
     const db = await connection();
