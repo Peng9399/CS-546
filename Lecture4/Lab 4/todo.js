@@ -2,6 +2,12 @@ const mongoCollections = require('./mongoCollections');
 const toDoItems = mongoCollections.todoItems;
 const uuid = require("uuid/v4");
 
+const errorChecking = value => {
+    if(typeof value !== 'string') {
+        throw 'Value has to be of type of string'
+    }
+}
+
 async function createTask(title, description) {
     if(!title) {
         throw 'No title was provided';
@@ -39,6 +45,7 @@ async function getAllTasks() {
 }
 
 async function getTask(id) {
+    errorChecking(id);
     if(!id) {
         throw 'No id was provided';
     }
@@ -53,6 +60,7 @@ async function getTask(id) {
 }
 
 async function completeTask(taskId) {
+    errorChecking(taskId);
     if(!taskId) {
         throw 'No id was provided';
     }
@@ -74,6 +82,7 @@ async function completeTask(taskId) {
 }
 
 async function removeTask(id) {
+    errorChecking(id);
     if(!id) {
         throw 'No id was provided';
     }
