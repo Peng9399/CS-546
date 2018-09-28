@@ -33,7 +33,6 @@ const main = async () => {
     const updatedSecondTask = await toDoItems.getTask(taskTwoInsert._id)
     console.log(updatedSecondTask);
 
-
     const db = await connection();
     await db.serverConfig.close();
 
