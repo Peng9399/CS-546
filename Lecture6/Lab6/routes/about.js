@@ -1,4 +1,4 @@
-const express = require("exporess");
+const express = require("express");
 const router = express.Router();
 const aboutMe = {
     "name": "Jonathan Fishkin",
@@ -8,7 +8,9 @@ const aboutMe = {
     "hobbies": ["array", "of", "hobbies"]
 }
 
-router.get("/about", async (req, res) => {
+router.get("/", async (req, res) => {
     res.json(aboutMe);
 })
+
+module.exports = router;
       

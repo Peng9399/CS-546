@@ -8,6 +8,8 @@ const education =   {
   }
 
 
-  router.get("/education", async (req, res) => {
+  router.get("/", async (req, res) => {
     res.json(education);
   })
+
+  module.exports = router;
