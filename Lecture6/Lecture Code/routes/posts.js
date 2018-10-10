@@ -3,9 +3,9 @@ const router = express.Router();
 const data = require("../data");
 const postData = data.posts;
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {     // router listens for a location, waits for a request to come in "req", then responds "res" to that
   try {
-    const post = await postData.getPostById(req.params.id);
+    const post = await postData.getPostById(req.params.id); // http://localhost:3000/posts/1234234234  this basically works when the router sees a method that has id in it
     res.json(post);
   } catch (e) {
     res.status(404).json({ message: "Post not found" });
