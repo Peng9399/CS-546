@@ -7,9 +7,9 @@ const constructor = app => {
     app.use("/story", story);
     app.use("/education", education);
 
-     app.use("*", (req, res) => {
-         res.status(404).json({ error: "Not found" });
-       });
+    app.use("*", (req, res) => {
+        res.status(404).json({ error: "Not found" });
+    });
 };
 
 module.exports = constructor;
