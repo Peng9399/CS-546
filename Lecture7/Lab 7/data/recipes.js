@@ -45,12 +45,9 @@ const getRecipe = async id => {
 }
 
 
-const updateRecipe = async id => {
-
-}
 
 
-const patchRecipe = async (id, updatedRecipe) => {
+const updateRecipe = async (id, updatedRecipe) => {
     if(!id) throw "No id was provided";
     if(!updatedRecipe) throw "No id was provided";
 
@@ -80,6 +77,10 @@ const patchRecipe = async (id, updatedRecipe) => {
     return await this.getRecipe(id)
 
 
+}
+
+const patchRecipe = async id => {
+    //need to implement this
 }
 
 

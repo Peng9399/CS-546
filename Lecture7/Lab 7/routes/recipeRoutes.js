@@ -5,7 +5,7 @@ const recipeData = recipe.recipes;
 
 router.get("/", async (req, res) => {
     try {
-        const getRecipes = await recipeData.allRecipes;
+        const getRecipes = await recipeData.allRecipes();
         res.json(getRecipes);
     } catch (error) {
         res.status(404).json({error: error})
@@ -21,11 +21,52 @@ router.get("/:id", async (req, res) => {
     }
 })
 
+router.post("/", async (req, res) => {
+    const bodyData = req.body;               //used with body-parser to parse body data
+    try {
+        const {title, ingredients, steps} = bodyData;
+        const postRecipe = await recipeData.addRecipe(title, ingredients, steps);
+        res.json(postRecipe);
+    } catch (error) {
+        res.status(404).json({error: error})
+    }
+})
+
+router.put("/:id", async (req, res) => {
+    const updatedData = req.body;
+    try {
+        await recipeData.getRecipe(req.params.id)    
+    } catch (error) {
+        res.status(404).json({error: "Could not find post"})
+    }
+
+    try {
+        const updatedRecipe = await recipeData.updateRecipe(req.params.id, updatedData)
+        res.json(updatedRecipe);
+    } catch (error) {
+        res.status(404).json({error: error})
+    }
+})
+
+router.patch("/:id", async (req, res) => {
+// need to implement this
+})
 
 
+router.delete("/:id", async (req, res) => {
+    try {
+        await recipeData.getRecipe(req.params.id);    
+    } catch (error) {
+        res.status(404).json({error: "Could not find post"});
+    }
 
+    try {
+        await recipeData.deleteRecipe(req.params.id);
+    } catch (error) {
+        res.status(404).json({error: error})
+    }
 
-
+})
 
 
 module.exports = router;
