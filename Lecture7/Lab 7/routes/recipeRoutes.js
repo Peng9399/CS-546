@@ -27,8 +27,7 @@ router.post("/", async (req, res) => {
         const title = bodyData.title;
         const ingredients = bodyData.ingredients;
         const steps = bodyData.steps;        
-        const postRecipe = await recipeData.addRecipe(title, ingredients, steps);
-        console.log(postRecipe);
+        const postRecipe = await recipeData.addRecipe(title, ingredients, steps);;
         res.json(postRecipe);
     } catch (error) {
         res.status(500).json({error: error})
