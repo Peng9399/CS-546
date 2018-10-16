@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
         const getRecipes = await recipeData.allRecipes();
         res.json(getRecipes);
     } catch (error) {
-        res.status(404).json({error: "No recipes to be found"})
+        res.status(500).json({ error: error });
     }
 })
 
