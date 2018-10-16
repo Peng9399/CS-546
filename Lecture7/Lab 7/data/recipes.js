@@ -9,7 +9,7 @@ const addRecipe = async (title, ingredients, steps) => {
     if(!steps || !steps.isArray()) throw "Ingredients was either not provided or isnt a type of array";
 
     const recipeObject = {
-        _id: uuid.v4(),
+        _id: uuid(),
         title: title,
         ingredients: ingredients,
         steps: steps      
@@ -21,7 +21,7 @@ const addRecipe = async (title, ingredients, steps) => {
 
     const newId = recipeInsert.insertedId;
 
-    return await this.getRecipe(newId);
+    return await getRecipe(newId);
 
 } 
 

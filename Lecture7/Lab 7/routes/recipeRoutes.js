@@ -24,11 +24,14 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     const bodyData = req.body;               //used with body-parser to parse body data
     try {
-        const {title, ingredients, steps} = bodyData;
+        const title = bodyData.title;
+        const ingredients = bodyData.ingredients;
+        const steps = bodyData.steps;        
         const postRecipe = await recipeData.addRecipe(title, ingredients, steps);
+        console.log(postRecipe);
         res.json(postRecipe);
     } catch (error) {
-        res.status(404).json({error: error})
+        res.status(500).json({error: error})
     }
 })
 
