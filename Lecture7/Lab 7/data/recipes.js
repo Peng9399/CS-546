@@ -20,6 +20,7 @@ const addRecipe = async (title, ingredients, steps) => {
     if (recipeInsert.insertedCount === 0) throw "Could not create the task";
 
     const newId = recipeInsert.insertedId;
+    console.log(newId)
 
     return await getRecipe(newId);
 
@@ -36,7 +37,7 @@ const getRecipe = async id => {
     if(!id) throw "No id was provided";
 
     const recipeCollection = await recipes();
-    const findRecipe = await recipeCollection.findOne({"_id" : id})
+    const findRecipe = await recipeCollection.findOne({_id : id})
 
     if (findRecipe === null) throw 'No task was found with that given id';
 
