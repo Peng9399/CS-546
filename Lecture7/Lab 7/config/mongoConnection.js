@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const settings = {
   mongoConfig: {
-    serverUrl: "mongodb://localhost:3000/",
+    serverUrl: "mongodb://localhost:27017/",
     database: "lab7-recipes"
   }
 };
