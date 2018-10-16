@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.router();
+const router = express.Router();
 const recipe = require("../data");
 const recipeData = recipe.recipes;
 
@@ -41,8 +41,8 @@ router.put("/:id", async (req, res) => {
     }
 
     try {
-        const updatedRecipe = await recipeData.updateRecipe(req.params.id, updatedData)
-        res.json(updatedRecipe);
+        const updatingRecipe = await recipeData.updateRecipe(req.params.id, updatedData)
+        res.json(updatingRecipe);
     } catch (error) {
         res.status(404).json({error: error})
     }

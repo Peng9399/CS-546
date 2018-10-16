@@ -66,11 +66,11 @@ const updateRecipe = async (id, updatedRecipe) => {
         updatedData.steps = updatedRecipe.steps
     }
 
-    let updatedRecipe = {
+    let updatingRecipe = {
         $set: updatedData
     }
 
-    const updateInfo = await recipeCollection.updateOne({ _id: id }, updatedRecipe);  //updates task with recipe id, and object
+    const updateInfo = await recipeCollection.updateOne({ _id: id }, updatingRecipe);  //updates task with recipe id, and object
     if (updateInfo.modifiedCount === 0) throw 'could not update task sucessfully';
 
 
