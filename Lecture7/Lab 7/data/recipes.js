@@ -17,11 +17,11 @@ const addRecipe = async (title, ingredients, steps) => {
 
     const recipeCollection =  await recipes();
     const recipeInsert = await recipeCollection.insertOne(recipeObject);
-    if (recipeInsert.insertedCount === 0) throw "Could not create the task";
+    if (recipeInsert.insertedCount === 0) throw "Could not create the recipe";
 
     const newId = recipeInsert.insertedId;
 
-    return await this.getRecipe(newId);
+    return await getRecipe(newId);
 
 } 
 
@@ -38,7 +38,7 @@ const getRecipe = async id => {
     const recipeCollection = await recipes();
     const findRecipe = await recipeCollection.findOne({_id : id})
 
-    if (findRecipe === null) throw 'No task was found with that given id';
+    if (findRecipe === null) throw 'No recipe was found with that given id';
 
     return findRecipe;
 
@@ -71,10 +71,10 @@ const updateRecipe = async (id, updatedRecipe) => {
     }
 
     const updateInfo = await recipeCollection.updateOne({ _id: id }, updatingRecipe);  //updates task with recipe id, and object
-    if (updateInfo.modifiedCount === 0) throw 'could not update task sucessfully';
+    if (updateInfo.modifiedCount === 0) throw 'could not update recipe sucessfully';
 
 
-    return await this.getRecipe(id)
+    return await getRecipe(id)
 
 
 }
@@ -91,7 +91,7 @@ const deleteRecipe = async id => {
     const removeRecipe = await recipeCollection.removeOne({ _id: id });
 
     if (removeRecipe.deletedCount === 0) {
-        throw `Could not delete post with id of ${id}`;
+        throw `Could not delete recipe with id of ${id}`;
       }
 }
 

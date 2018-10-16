@@ -39,7 +39,7 @@ router.put("/:id", async (req, res) => {
     try {
         await recipeData.getRecipe(req.params.id)    
     } catch (error) {
-        res.status(404).json({error: "Could not find post"})
+        res.status(404).json({error: "Could not find recipe"})
     }
 
     try {
@@ -59,13 +59,13 @@ router.delete("/:id", async (req, res) => {
     try {
         await recipeData.getRecipe(req.params.id);    
     } catch (error) {
-        res.status(404).json({error: "Could not find post"});
+        res.status(404).json({error: `Could not find and delete recipe with id of ${req.params.id}`});
     }
 
     try {
         await recipeData.deleteRecipe(req.params.id);
     } catch (error) {
-        res.status(404).json({error: error})
+        res.status(500).json({error: error})
     }
 
 })
