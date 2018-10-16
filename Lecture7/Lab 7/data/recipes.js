@@ -21,7 +21,7 @@ const addRecipe = async (title, ingredients, steps) => {
 
     const newId = recipeInsert.insertedId;
 
-    return await getRecipe(newId);
+    return await this.getRecipe(newId);
 
 } 
 
