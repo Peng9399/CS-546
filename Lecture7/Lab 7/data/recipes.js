@@ -5,8 +5,8 @@ const uuid = require("node-uuid");
 
 const addRecipe = async (title, ingredients, steps) => {
     if(!title || typeof title !== "string") throw "Title was either not provided or isnt a string";
-    if(!ingredients || !ingredients.isArray()) throw "Ingredients was either not provided or isnt a type of array";
-    if(!steps || !steps.isArray()) throw "Ingredients was either not provided or isnt a type of array";
+    if(!ingredients || !Array.isArray(ingredients)) throw "Ingredients was either not provided or isnt a type of array";
+    if(!steps || !Array.isArray(steps)) throw "Ingredients was either not provided or isnt a type of array";
 
     const recipeObject = {
         _id: uuid(),
