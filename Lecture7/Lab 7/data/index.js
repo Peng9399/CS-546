@@ -1,4 +1,4 @@
-const recipesData = require("./recipes")
+const recipesData = require("./recipes");
 
 module.exports ={
     recipes: recipesData
