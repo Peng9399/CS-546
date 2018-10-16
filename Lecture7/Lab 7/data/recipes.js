@@ -26,7 +26,7 @@ const addRecipe = async (title, ingredients, steps) => {
 } 
 
 
-const allRecipes = async => {
+const allRecipes = async () => {
     const recipeCollection = await recipes();
     return await recipeCollection.find({}).toArray();
 }
@@ -83,7 +83,6 @@ const patchRecipe = async (id, updatedRecipe) => {
 }
 
 
-
 const deleteRecipe = async id => {
     if(!id) throw "No id was provided";
 
@@ -94,9 +93,6 @@ const deleteRecipe = async id => {
         throw `Could not delete post with id of ${id}`;
       }
 }
-
-
-
 
 
 
