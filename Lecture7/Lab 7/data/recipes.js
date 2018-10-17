@@ -79,8 +79,34 @@ const updateRecipe = async (id, updatedRecipe) => {
 
 }
 
-const patchRecipe = async id => {
-    //need to implement this
+const patchRecipe = async (id, updatedRecipe) => {
+    if(!id) throw "No id was provided";
+    if(!updatedRecipe) throw "No id was provided";
+
+    const recipeCollection = await recipes();
+    const updatedData = {}
+
+    if(updatedRecipe.title){
+        updatedData.title = updatedRecipe.title;
+    }
+
+    if(updatedRecipe.ingredients){
+        updatedData.ingredients = updatedRecipe.ingredients;
+    }
+
+    if(updatedRecipe.steps){
+        updatedData.steps = updatedRecipe.steps
+    }
+
+    let updatingRecipe = {
+        $set: updatedData
+    }
+
+    const updateInfo = await recipeCollection.updateOne({ _id: id }, updatingRecipe);  //updates task with recipe id, and object
+    if (updateInfo.modifiedCount === 0) throw 'could not update recipe sucessfully';
+
+
+    return await getRecipe(id)
 }
 
 

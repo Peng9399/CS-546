@@ -51,21 +51,28 @@ router.put("/:id", async (req, res) => {
 })
 
 router.patch("/:id", async (req, res) => {
-// need to implement this
+    const patchedData = req.body;
+    try {
+        await recipeData.getRecipe(req.params.id)    
+    } catch (error) {
+        res.status(404).json({error: "Could not find recipe"})
+    }
+
+    try {
+        const updatingRecipe = await recipeData.patchRecipeRecipe(req.params.id, patchedData)
+        res.json(updatingRecipe);
+    } catch (error) {
+        res.status(404).json({error: error})
+    }
 })
 
 
 router.delete("/:id", async (req, res) => {
     try {
-        await recipeData.getRecipe(req.params.id);    
+        await recipeData.getRecipe(req.params.id); 
+        await recipeData.deleteRecipe(req.params.id);   
     } catch (error) {
         res.status(404).json({error: `Could not find and delete recipe with id of ${req.params.id}`});
-    }
-
-    try {
-        await recipeData.deleteRecipe(req.params.id);
-    } catch (error) {
-        res.status(500).json({error: error})
     }
 
 })
