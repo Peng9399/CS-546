@@ -53,16 +53,11 @@ router.put("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
     const patchedData = req.body;
     try {
-        await recipeData.getRecipe(req.params.id)    
+        await recipeData.getRecipe(req.params.id)
+        const updatingRecipe = await recipeData.patchRecipe(req.params.id, patchedData)
+        res.json(updatingRecipe);    
     } catch (error) {
         res.status(404).json({error: "Could not find recipe"})
-    }
-
-    try {
-        const updatingRecipe = await recipeData.patchRecipeRecipe(req.params.id, patchedData)
-        res.json(updatingRecipe);
-    } catch (error) {
-        res.status(404).json({error: error})
     }
 })
 
