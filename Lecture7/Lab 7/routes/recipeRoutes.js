@@ -65,7 +65,8 @@ router.patch("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         await recipeData.getRecipe(req.params.id); 
-        await recipeData.deleteRecipe(req.params.id);   
+        await recipeData.deleteRecipe(req.params.id);
+        res.status(200).send(`The recipe with id of ${req.params.id} has been deleted `);   
     } catch (error) {
         res.status(404).json({error: `Could not find and delete recipe with id of ${req.params.id}`});
     }
