@@ -27,8 +27,16 @@ const addRecipe = async (title, ingredients, steps) => {
 
 
 const allRecipes = async () => {
+    const arrayrecipes = [];
     const recipeCollection = await recipes();
-    return await recipeCollection.find({}).toArray();
+    const recipeFinder = await recipeCollection.find({}).toArray();
+    for(let i = 0; i < recipeFinder.length; i++){
+        const testerObject = {}
+        testerObject["_id"] = recipeFinder[i]._id;
+        testerObject["title"] = recipeFinder[i].title;
+        arrayrecipes.push(testerObject)
+    }
+    return arrayrecipes;
 }
 
 
