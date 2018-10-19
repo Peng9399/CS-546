@@ -37,16 +37,11 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     const updatedData = req.body;
     try {
-        await recipeData.getRecipe(req.params.id)    
+        await recipeData.getRecipe(req.params.id);
+        const updatingRecipe = await recipeData.updateRecipe(req.params.id, updatedData)
+        res.json(updatingRecipe);    
     } catch (error) {
         res.status(404).json({error: "Could not find recipe"})
-    }
-
-    try {
-        const updatingRecipe = await recipeData.updateRecipe(req.params.id, updatedData)
-        res.json(updatingRecipe);
-    } catch (error) {
-        res.status(404).json({error: error})
     }
 })
 
