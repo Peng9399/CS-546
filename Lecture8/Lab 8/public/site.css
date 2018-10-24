@@ -1,3 +1,18 @@
 p {
     font-size: 40px;
 }
+
+
+.success {
+    color:#28a745
+}
+
+
+.failure {
+    color: #dc3545
+}
+
+
+.error {
+    color: #fff53f
+}
