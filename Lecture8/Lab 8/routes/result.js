@@ -5,7 +5,12 @@ const checker = require("../checker")
 router.post("/", async(req , res) => {
     let wordTest = req.body["text-to-test"];
     const validPalindrome = checker(wordTest); 
-    res.json({testing: validPalindrome})
+    if(validPalindrome) {
+        res.render("palindrome/results", {
+            title: "The Palindrome Results!" ,
+            class: success 
+        })
+    }
 })
 
 
