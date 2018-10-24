@@ -8,8 +8,17 @@ router.post("/", async(req , res) => {
     if(validPalindrome) {
         res.render("palindrome/results", {
             title: "The Palindrome Results!" ,
-            class: success 
+            class: "success",
+            textToTest: wordTest,
+            statusMessage: "This Phrase IS a Palindrome" 
         })
+    } else {
+        res.render("palindrome/results", {
+            title: "The Palindrome Results!" ,
+            class: "failure",
+            textToTest: wordTest,
+            statusMessage: "This Phrase is NOT a Palindrome" 
+        })        
     }
 })
 
