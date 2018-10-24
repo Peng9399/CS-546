@@ -21,6 +21,4 @@ const checker = phrase => {
     return reverseString === forwardString;
 }
 
-console.log(checker("Taco cat? Taco cat."))
-
 module.exports = checker;
