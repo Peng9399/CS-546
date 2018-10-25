@@ -33,6 +33,9 @@ button:hover{
     color: white;
 }
 
+a {
+    font-size: 16pt;
+}
 a:visited{
     color:black;
 }
