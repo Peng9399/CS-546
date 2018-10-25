@@ -13,8 +13,20 @@ main {
     margin: auto;
   }
 
+h1 {
+    text-shadow: 2px 2px 5px black;  
+}
+
 p {
     font-size: 24px;
+}
+
+a:visited{
+    color:black;
+}
+
+a:hover {
+    color: #42c5f4
 }
 
 
