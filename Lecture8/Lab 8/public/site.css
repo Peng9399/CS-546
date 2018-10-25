@@ -1,6 +1,6 @@
 html,
 body {
-  font-size: 14pt;
+  font-size: 24px;
 }
 
 body {
@@ -14,11 +14,19 @@ main {
   }
 
 h1 {
-    text-shadow: 2px 2px 5px black;  
+    text-shadow: 2px 2px 10px black;  
 }
 
 p {
-    font-size: 24px;
+    font-size: 20px;
+}
+
+p.message{
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 
 button{
