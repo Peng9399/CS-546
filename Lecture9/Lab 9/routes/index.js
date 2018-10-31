@@ -1,8 +1,10 @@
 const constructorMethod = app => {
     app.use("/", async (req, res) => {
-        res.render("palindrome/static", {
-            title: "Palindrome checker"
-        });
+        res.render("palindrome/static", {});
+    });
+
+    app.post("/", async(req, res) => {
+        res.render("palindrome/server", {});
     });
 }
 
