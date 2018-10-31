@@ -1,3 +1,3 @@
-const checker = require("./checker");
+const palindromeChecker = require("./checker");
 
-module.exports = checker;
+module.exports = palindromeChecker;
