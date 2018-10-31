@@ -3,14 +3,6 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/public/main.css">
-    <script>
-        function test () {
-            const x = document.createElement("li")
-            const t = document.createTextNode("Coffee");
-            x.appendChild(t)
-            document.getElementById("attempts").appendChild(x)
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -20,8 +12,10 @@
     <main>
         {{{body}}}
     </main>
+    <ol id="attempts"></ol>
     <footer>
         <h3>Jonathan Fishkin 10394200</h3>
     </footer>
+    <script src="/public/form.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ const constructorMethod = app => {
     });
 
     app.post("/", async(req, res) => {
-        res.render("palindrome/server", {});
+        res.render("palindrome/static", {});
     });
 }
 
