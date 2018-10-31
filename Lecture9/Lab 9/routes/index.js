@@ -1,5 +1,5 @@
 const constructorMethod = app => {
-    app.use("/", async (req, res) => {
+    app.get("/", async (req, res) => {
         res.render("palindrome/static", {});
     });
 
