@@ -1,3 +1,19 @@
+body {
+    background: #dedede;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    max-width: 75%;
+    margin: auto;
+}
+
+
+p {
+   font-size: 25px;
+   color: green;
+   border-style: solid;
+   border-width: 3px;
+   border-color: black;
+}
+
 .is-palindrome {
     color: #0000FF
 }

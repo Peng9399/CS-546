@@ -21,10 +21,12 @@ const checker = phrase => {
     return reverseString === forwardString;
 }
 
+const container = document.getElementById("error_container");
+container.style.display = "none";        //hides the element by default
+
 document.addEventListener("submit", event => {
     event.preventDefault();         //stops the page from refreshing
-    const phrase = document.getElementsByName("phrase")[0].value        //its a list so gets 0 list value
-    const container = document.getElementById("error_container")
+    const phrase = document.getElementsByName("phrase")[0].value;     //its a list so gets 0 list value
     try {
         const boolean = checker(phrase);
         const x = document.createElement("li");
@@ -37,8 +39,10 @@ document.addEventListener("submit", event => {
         const t = document.createTextNode(phrase);
         x.appendChild(t);
         document.getElementById("attempts").appendChild(x);
-        container.innerHTML = ""      
+        container.innerHTML = ""              //sets no text
+        container.style.display = "none"      //hides the element entirely     
     } catch (error) {
+        container.style.display = "inline"     //shows the element with error
         container.innerHTML = error
     }
 })
