@@ -1,5 +1,6 @@
 const checker = phrase => {
-    if(!phrase) throw "Error: No phrase was provided."
+    if(!phrase) throw "Error: No phrase was provided.";
+    if (!phrase.replace(/\s/g, '').length) throw "Error: Phrase only contains spaces";
     const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let reverseString = "";
     let forwardString = "";

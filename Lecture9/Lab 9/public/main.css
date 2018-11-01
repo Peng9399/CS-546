@@ -34,6 +34,7 @@ ol {
 
 textarea {
     font-size: 20px;
+    box-shadow: 5px 5px 10px grey;
 }
 
 button{
@@ -44,6 +45,7 @@ button{
     text-align:center;
     position: relative;
     bottom: 5px;
+    left: 5px;
 }
 
 button:hover{
