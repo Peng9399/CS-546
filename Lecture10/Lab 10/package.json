@@ -1,10 +1,11 @@
 {
-  "name": "lecture10",
+  "name": "lab10",
   "version": "1.0.0",
   "description": "cs-546-lab-10",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Jonathan Fishkin 10394200",
   "license": "ISC",
