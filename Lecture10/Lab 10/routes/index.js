@@ -12,12 +12,16 @@ const constructorMethod = app => {
     });
 
     app.get("/private", async (req, res) => {
-        console.log(req.cookies.AuthCookie)
+   //     console.log(req.cookies.AuthCookie)
         try {
-            let session = req.cookies.AuthCookie._id
+            let session = req.cookies.AuthCookie.session
+            console.log(session)
+   //         console.log(users)
+
             const userElement = await users.find(element => {
-                return element.id === session;
+                return element._id === session;
             })
+            console.log(userElement)
             if(userElement) {
                 res.render("authentication/private", {
                     userName: userElement.username,
@@ -37,7 +41,7 @@ const constructorMethod = app => {
     app.get("/logout", (req, res, next) => {
         res.render("authentication/logout", {});
         res.clearCookie("AuthCookie");
-        console.log(req.cookies)
+ //       console.log(req.cookies)
     });
 
     app.post("/login", async (req, res) => {
@@ -52,6 +56,7 @@ const constructorMethod = app => {
             })
 
             comparePassword = await bcrypt.compare(passWord, userElement.hashed_password)   //compares the hashed password
+            console.log(comparePassword)
 
             if(comparePassword === true) {
                 userElement._id = sessionId;
