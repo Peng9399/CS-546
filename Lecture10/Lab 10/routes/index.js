@@ -55,10 +55,10 @@ const constructorMethod = app => {
                 res.cookie("AuthCookie", {session: userElement._id}); //creates a new cookie with value of AuthCookie
                 res.redirect("/private");           
             } else {
-                res.redirect("/");
+                res.render("authentication/static", {err: true})
             }
         } catch (error) {
-            res.redirect("/");
+            res.render("authentication/static", {err: true})
         }
     });
 }
