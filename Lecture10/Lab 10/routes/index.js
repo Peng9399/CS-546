@@ -12,7 +12,12 @@ const constructorMethod = app => {
     });
 
     app.get("/private", (req, res, next) => {
-
+        if(!req.cookies.AuthCookie) {
+            res.status(403).send("You are not logged in!"); 
+        } else {
+            res.render("authentication/static", {});
+            console.log(req.cookies.AuthCookie.session)
+        }
     });
 
     app.post("/login", async (req, res, next) => {
