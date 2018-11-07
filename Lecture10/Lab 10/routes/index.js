@@ -12,6 +12,7 @@ const constructorMethod = app => {
     });
 
     app.get("/private", async (req, res) => {
+        console.log(req.cookies.AuthCookie)
         try {
             let session = req.cookies.AuthCookie._id
             const userElement = await users.find(element => {
@@ -33,8 +34,9 @@ const constructorMethod = app => {
     });
 
     app.get("/logout", (req, res, next) => {
-        res.clearCookie("AuthCookie");
         res.render("authentication/logout", {});
+        res.clearCookie("AuthCookie");
+        console.log(req.cookies)
     });
 
     app.post("/login", async (req, res) => {
