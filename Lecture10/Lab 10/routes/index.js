@@ -20,10 +20,11 @@ const constructorMethod = app => {
             })
             if(userElement) {
                 res.render("authentication/private", {
-                    id: userElement.id,
                     userName: userElement.username,
                     firstName: userElement.first_name,
-                    lastName: userElement.last_name
+                    lastName: userElement.last_name,
+                    profession: userElement.profession,
+                    bio: userElement.bio
                 });
             } else {
                 res.status(403).render("authentication/error", {});  
