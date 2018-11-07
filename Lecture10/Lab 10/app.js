@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const cookieParser = require("cookie-parser");
 const static = express.static(__dirname + "/public");
 
 const configRoutes = require("./routes");
 const exphbs = require("express-handlebars");
 
 app.use("/public", static);           //this is a static asset that needs to be referenced with the css file
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
