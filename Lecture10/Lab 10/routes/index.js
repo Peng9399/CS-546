@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const users = require("../users");
 
 const constructorMethod = app => {
-    app.get("/", (req, res, next) => {
+    app.get("/", (req, res) => {
         if(req.cookies.AuthCookie){               //checks to see if there is a cookie with value token
             res.redirect("/private")
          } else {
@@ -11,7 +11,7 @@ const constructorMethod = app => {
         }
     });
 
-    app.get("/private", async (req, res, next) => {
+    app.get("/private", async (req, res) => {
         try {
             let session = req.cookies.AuthCookie._id
             const userElement = await users.find(element => {
@@ -25,10 +25,10 @@ const constructorMethod = app => {
                     lastName: userElement.last_name
                 });
             } else {
-                res.status(403).send("You are not logged in!");  
+                res.status(403).render("authentication/error", {});  
             }
         } catch (error) {
-            res.status(403).send("You are not logged in!");  
+            res.status(403).render("authentication/error", {});    
         }
     });
 
@@ -37,7 +37,7 @@ const constructorMethod = app => {
         res.render("authentication/logout", {});
     });
 
-    app.post("/login", async (req, res, next) => {
+    app.post("/login", async (req, res) => {
         const userName = req.body["username"];
         const passWord = req.body["password"];
         const sessionId = uuid.v4();
