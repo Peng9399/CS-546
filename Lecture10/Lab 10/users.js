@@ -1,6 +1,7 @@
+const uuid = require("node-uuid");
 const users = [
     {
-        _id: 1,
+        _id: uuid.v4(),
         username: 'masterdetective123',
         first_name: 'Sherlock',
         last_name: 'Holmes',
@@ -9,7 +10,7 @@ const users = [
         hashed_password: '$2a$16$7JKSiEmoP3GNDSalogqgPu0sUbwder7CAN/5wnvCWe6xCKAKwlTD.'
     },
     {
-        _id: 2,
+        _id: uuid.v4(),
         username: 'lemon',
         first_name: 'Elizabeth',
         last_name: 'Lemon',
@@ -18,7 +19,7 @@ const users = [
         hashed_password: '$2a$16$SsR2TGPD24nfBpyRlBzINeGU61AH0Yo/CbgfOlU1ajpjnPuiQaiDm'
     },
     {
-        _id: 3,
+        _id: uuid.v4(),
         username: 'theboywholived',
         first_name: 'Harry',
         last_name: 'Potter',

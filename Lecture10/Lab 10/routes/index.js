@@ -1,4 +1,3 @@
-const uuid = require("node-uuid");
 const bcrypt = require("bcrypt");
 const users = require("../users");
 
@@ -47,7 +46,6 @@ const constructorMethod = app => {
     app.post("/login", async (req, res) => {
         const userName = req.body["username"];
         const passWord = req.body["password"];
-        const sessionId = uuid.v4();
         let comparePassword = false;
 
         try {
@@ -59,7 +57,6 @@ const constructorMethod = app => {
             console.log(comparePassword)
 
             if(comparePassword === true) {
-                userElement._id = sessionId;
                 res.cookie("AuthCookie", {session: userElement._id}); //creates a new cookie with value of AuthCookie
                 res.redirect("/private");           
             } else {
