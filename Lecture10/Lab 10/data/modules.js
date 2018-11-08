@@ -1,9 +1,8 @@
 const userData = require("../data/users.js");
 const bcrypt = require("bcrypt");
 
-    //check if username exists
 async function userCheck(username, password) {
-    let userInfo = userData.find(element => {
+    let userInfo = userData.find(element => {   //trying to find where the username is to match the password
         return element.username == username;
     });
     if (!userInfo) return false;
