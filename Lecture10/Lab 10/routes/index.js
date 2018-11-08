@@ -1,71 +1,83 @@
-const bcrypt = require("bcrypt");
-const users = require("../users");
+const userReferences = require("../data/modules");
 
 const constructorMethod = app => {
-    app.get("/", (req, res) => {
-        if(req.cookies.AuthCookie){               //checks to see if there is a cookie with value token
-            res.redirect("/private")
-         } else {
-            res.render("authentication/static", {}); //if no cookie it will render this page
-        }
-    });
+  //1. validate the login information
+  app.use(async (req, res, next) => {
+    if (!req.cookies.AuthCookie) {
+      req.user = null;
+      next();
+    } else {
+      let result = await userReferences.getUser(req.cookies.AuthCookie); // check for user ID in the cookie
 
-    app.get("/private", async (req, res) => {
-   //     console.log(req.cookies.AuthCookie)
-        try {
-            let session = req.cookies.AuthCookie.session
-            console.log(session)
-   //         console.log(users)
-
-            const userElement = await users.find(element => {
-                return element._id === session;
-            })
-            console.log(userElement)
-            if(userElement) {
-                res.render("authentication/private", {
-                    userName: userElement.username,
-                    firstName: userElement.first_name,
-                    lastName: userElement.last_name,
-                    profession: userElement.profession,
-                    bio: userElement.bio
-                });
-            } else {
-                res.status(403).render("authentication/error", {});  
-            }
-        } catch (error) {
-            res.status(403).render("authentication/error", {});    
-        }
-    });
-
-    app.get("/logout", (req, res, next) => {
-        res.render("authentication/logout", {});
+      //not available? clear the cookie
+      if (!result) {
         res.clearCookie("AuthCookie");
- //       console.log(req.cookies)
-    });
+        req.user = null;
+        next();
 
-    app.post("/login", async (req, res) => {
-        const userName = req.body["username"];
-        const passWord = req.body["password"];
-        let comparePassword = false;
+        //available? continue.
+      } else {
+        req.user = result; //passing in whatever we got up top from result as the request user.
+        next();
+      }
+    }
+  });
 
-        try {
-            const userElement = await users.find(element => {
-                return element.username === userName;
-            })
+  //homepage
+  app.get("/", (req, res) => {
+    //user is tracked in cookie? redirect straight to their private page.
+    if (req.user) {
+      res.redirect("/private");
+      //no user available in the cookie? render a login screen.
+    } else {
+      res.render("authentication/static");
+    }
+  });
 
-            comparePassword = await bcrypt.compare(passWord, userElement.hashed_password)   //compares the hashed password
-            console.log(comparePassword)
+  //post login, get username and pass, run Bcrypt auth functions, address the cookie, redirect to page
+  app.post("/login", async (req, res) => {
+    //store our req params as username and password
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log(username, password);
 
-            if(comparePassword === true) {
-                res.cookie("AuthCookie", {session: userElement._id}); //creates a new cookie with value of AuthCookie
-                res.redirect("/private");           
-            } else {
-                res.render("authentication/static", {err: true})
-            }
-        } catch (error) {
-            res.render("authentication/static", {err: true})
-        }
-    });
-}
+    let result = await userReferences.userCheck(username, password); //we're comparing our username/ pass to hashed - refer logincheck notes
+
+    //assigning an authcookie with result and redirecting to private
+    if (result) {
+      res.cookie("AuthCookie", result)
+      res.redirect("/private");
+      //didnt work, try again
+    } else {
+      res.render("authentication/static", { err: true });
+    }
+  });
+
+  //fill in appropriate info - ONLY IF WE HAVE A COOKIE THAT ALLOWS US TO!
+  app.get("/private", (req, res) => {
+    if (req.user) {
+      res.render("authentication/private", { 
+          userName: req.user.username,
+          firstName: req.user.first_name,
+          lastName: req.user.last_name,
+          profession: req.user.profession,
+          bio: req.user.bio
+        });
+      //DENY access if user not available for us
+    } else {
+      res.status(403).render("authentication/error");
+    }
+  });
+
+  //clear our cookie
+  app.get("/logout", (req, res) => {
+    res.clearCookie("AuthCookie")
+    res.render("authentication/logout");
+  });
+
+  app.use("*", (req, res) => {
+    res.redirect("/");
+  });
+};
 
 module.exports = constructorMethod;
