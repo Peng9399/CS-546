@@ -38,14 +38,14 @@ const constructorMethod = app => {
       let access_token = body.access_token
 
       const options = {                                             //this is your request from the spotify web api the get requests that are happening
-        url: 'https://api.spotify.com/v1/browse/categories?country=SE',
+        url: 'https://api.spotify.com/v1/me',
         headers: { 'Authorization': 'Bearer ' + access_token },
         json: true
       };
 
       // use the access token to access the Spotify Web API
       request.get(options, function(error, response, body) {
-        console.log(body.categories.items);
+      console.log(body);
       });
 
       let uri = 'http://localhost:3000/logged'
