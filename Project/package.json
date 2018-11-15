@@ -16,6 +16,8 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.12",
-    "node-uuid": "^1.4.8"
+    "node-uuid": "^1.4.8",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0"
   }
 }

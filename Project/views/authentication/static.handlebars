@@ -2,13 +2,5 @@
     <h1>Login Screen</h1>
 </header>
 <main>
-    <form action="/login" method="POST" id="login-form">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Submit!</button>
-    </form>
-
-    {{#if err}}
-        <p>invalid username or password</p>
-    {{/if}}
+    <a href="/login" class="btn btn-primary">Log in with Spotify</a>
 </main>
