@@ -1,5 +1,7 @@
 let request = require('request');
 let querystring = require('querystring');
+const user= require("../data")
+const userInfo = user.userData
 
 const constructorMethod = app => {
   let client_id = '0edee0583a08407fa148378bb88dcf68'; // Your client id
@@ -44,8 +46,13 @@ const constructorMethod = app => {
       };
 
       // use the access token to access the Spotify Web API
-      request.get(options, function(error, response, body) {
-      console.log(body);
+      request.get(options, async function(error, response, body) {
+        console.log(body.display_name);
+        try {
+            await userInfo.addUser(body.display_name)
+        } catch (error) {
+            console.log(error)
+        }
       });
 
       let uri = 'http://localhost:3000/logged'

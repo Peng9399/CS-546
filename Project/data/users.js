@@ -4,7 +4,7 @@ const uuid = require("node-uuid");
 
 
 const addUser = async (userName) => {
-    if(!userId) throw "No user id"
+    if(!userName) throw "No user id"
 
     let userObject = {
         _id: uuid(),
@@ -24,9 +24,7 @@ const getUser = async (id)  => {
 
     if (findUser === null) throw 'No recipe was found with that given id';
 
-    return findUser
-
-    
+    return findUser;    
 }
 
 module.exports = {
