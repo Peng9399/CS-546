@@ -1,13 +1,13 @@
 {
-  "name": "lab10",
+  "name": "webify",
   "version": "1.0.0",
-  "description": "cs-546-lab-10",
+  "description": "Webify Project",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
-  "author": "Jonathan Fishkin 10394200",
+  "author": "Webify",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.2",
